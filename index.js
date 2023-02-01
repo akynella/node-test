@@ -1,28 +1,10 @@
 
 const express = require('express')
 const app = express()
+var cors = require('cors')
 const port = 3000
 
-app.get('/', function (req, res) {
-  res.send('Hello World')
-})
-
-app.get('/dog', (req, res)=>{
-    res.send('<h1>강아지</h1>');
-})
-
-app.get('/cat', (req, res)=>{
-    res.json({'sound' : '야옹'});
-})
-
-app.get('/user/', (req, res)=>{
-    // const q = req.params;
-    // console.log(q);
-    const q = req.query;
-    console.log(q);
-
-    res.json({'sound' : q.id});
-})
+app.use(cors())
 
 app.get('/sound/:name', (req, res)=>{
     const { name } = req.params;
